@@ -2,7 +2,7 @@
 	"name": "playwright-vscode-trace-viewer",
 	"displayName": "playwright-vscode-trace-viewer",
 	"description": "View Playwright trace viewer files directly from vscode",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.60.0"
 	},
