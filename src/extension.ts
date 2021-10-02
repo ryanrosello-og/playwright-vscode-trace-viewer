@@ -13,26 +13,54 @@ export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('playwright-vscode-trace-viewer.helloWorld', () => {
+	let disposable = vscode.commands.registerCommand('playwright-vscode-trace-viewer.helloWorld', (...args) => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
 		// vscode.window.showInformationMessage('Hello World from playwright-vscode-trace-viewer!');
-		const editor = vscode.window.activeTextEditor;
-		if (editor) {
-			console.log('has context')
-			// if (!editor.document.fileName.endsWith('zip')) {
-			// 	return;
-			// }
-			const shellExec = new vscode.ShellExecution(`npx --version`);
 
-			vscode.tasks.executeTask(
-				new vscode.Task({ type: 'typesinstaller' },
-					vscode.TaskScope.Workspace,
-					'TypesInstaller',
-					'Types Installer',
-					shellExec,
-					'npm'));
+		let path = null;
+		if (args && args.length > 0) {
+			path = args[0].fsPath;
+			// if zip file
+			const shellExec = new vscode.ShellExecution(`npx playwright show-trace ${path} `);
+
+			try {
+
+				vscode.tasks.executeTask(
+					new vscode.Task({ type: 'typesinstaller' },
+						vscode.TaskScope.Workspace,
+						'TypesInstaller',
+						'Types Installer',
+						shellExec,
+						'npm'));
+			} catch (error) {
+				console.log(error)
+			}
+		} else {
+			return;
 		}
+
+
+
+
+		// const editor = vscode.window.activeTextEditor;
+		// if (editor) {
+		// 	console.log('has context')
+		// 	const p = editor.document.uri.path;
+		// 	console.log(p)
+		// 	// if (!editor.document.fileName.endsWith('zip')) {
+		// 	// 	return;
+		// 	// }
+		// 	const shellExec = new vscode.ShellExecution(`npx playwright show-trace C:\\ryanrosello-og\\vscode-ext\\pw-tyscript\\test-results\\tests-foo-dev-Page\\trace.zip `);
+
+		// 	vscode.tasks.executeTask(
+		// 		new vscode.Task({ type: 'typesinstaller' },
+		// 			vscode.TaskScope.Workspace,
+		// 			'TypesInstaller',
+		// 			'Types Installer',
+		// 			shellExec,
+		// 			'npm'));
+		// }
 		// vscode.window.setStatusBarMessage(`files.length > ${args.length}`, 3000);
 	});
 
