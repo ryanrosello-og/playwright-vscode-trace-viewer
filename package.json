@@ -10,27 +10,21 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:playwright-vscode-trace-viewer.helloWorld"
+		"onCommand:playwright-vscode-trace-viewer.show"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "playwright-vscode-trace-viewer.helloWorld",
-				"title": "Hello World"
+				"command": "playwright-vscode-trace-viewer.show",
+				"title": "Playwright View Trace"
 			}
 		],
 		"menus": {
-			"editor/title/context": [
-				{
-					"command": "playwright-vscode-trace-viewer.helloWorld",
-					"group": "1_cutcopypaste@10"
-				}
-			],
 			"explorer/context": [
 				{
-					"command": "playwright-vscode-trace-viewer.helloWorld",
-					"group": "6_copypath@100"
+					"command": "playwright-vscode-trace-viewer.show",
+					"group": "navigation@100"
 				}
 			]
 		}
