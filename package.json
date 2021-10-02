@@ -24,7 +24,8 @@
 			"explorer/context": [
 				{
 					"command": "playwright-vscode-trace-viewer.show",
-					"group": "navigation@100"
+					"group": "navigation@100",
+					"when": "resourceExtname == .zip"
 				}
 			]
 		}
