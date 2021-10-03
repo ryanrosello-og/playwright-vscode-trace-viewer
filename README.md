@@ -1,4 +1,4 @@
-# playwright-vscode-trace-viewer README
+# Playwright Trace Viewer for VSCode
 
 ## Features
 

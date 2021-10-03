@@ -1,9 +1,9 @@
 {
 	"name": "playwright-vscode-trace-viewer",
-	"displayName": "playwright-vscode-trace-viewer",
+	"displayName": "Playwright Trace Viewer for VSCode",
 	"description": "View Playwright trace viewer files directly from vscode",
-	"version": "1.0.0",
-	"icon": "https://github.com/ryanrosello-og/playwright-vscode-trace-viewer/blob/main/assets/icon.png",
+	"version": "1.0.1",
+	"icon": "assets/icon.png",
 	"publisher": "ryanrosello-og",
 	"author": {
 		"name": "ryanrosello-og"
@@ -15,8 +15,9 @@
 	"engines": {
 		"vscode": "^1.60.0"
 	},
+	"license": "MIT",
 	"categories": [
-		"Other"
+		"Testing"
 	],
 	"activationEvents": [
 		"onCommand:playwright-vscode-trace-viewer.show"
