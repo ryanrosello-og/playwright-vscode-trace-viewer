@@ -13,7 +13,7 @@ export async function activate(context: vscode.ExtensionContext) {
 				return;
 			}
 			try {
-				const shellExec = new vscode.ShellExecution(`npx playwright show-trace ${path} `);
+				const shellExec = new vscode.ShellExecution(`npx playwright show-trace "${path}" `);
 				let tsk = new vscode.Task({ type: `trace-viewer${Math.random()}` },
 					vscode.TaskScope.Workspace,
 					'trace-viewer',
