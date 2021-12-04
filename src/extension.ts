@@ -13,15 +13,17 @@ export async function activate(context: vscode.ExtensionContext) {
 				return;
 			}
 			try {
-				const shellExec = new vscode.ShellExecution(`npx playwright show-trace ${path} `);
-				let tsk = new vscode.Task({ type: `trace-viewer${Math.random()}` },
+				const p: vscode.ShellQuotedString = {
+					value: path,
+					quoting: vscode.ShellQuoting.Strong
+				};
+		
+				const shellExec = new vscode.ShellExecution('npx', ['playwright', 'show-trace', p]);
+				const tsk = new vscode.Task({ type: `shell` },
 					vscode.TaskScope.Workspace,
-					'trace-viewer',
-					'trace-viewer',
-					shellExec,
-					'npm');
-				tsk.isBackground = true;
-				tsk.runOptions.reevaluateOnRerun = true;
+					`trace-viewer${Math.random()}` ,
+					'shell',
+					shellExec);
 				vscode.tasks.executeTask(tsk);
 			} catch (error) {
 				vscode.window.showErrorMessage('Unable to open Playwright trace file: ' + error);
